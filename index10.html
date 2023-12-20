@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR generator</title>
+    <link rel="stylesheet" href="style10.css">
+    <style>
+        *{
+    margin:0px;
+    padding:0px;
+}
+
+.container{
+
+    height: 600px;
+    width:500px;
+    margin-left:500px;
+    margin-top: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+    border:2px solid rgba(93, 104, 201, 0.747);
+    background-color:rgb(112, 212, 17);
+    border-radius: 5px;
+}
+
+p{
+    color:crimson;
+    font-weight: 50px;
+    margin:50px;
+}
+
+#qrtext{
+    margin:20px;
+    border:0.5px solid blue;
+    height:40px;
+    width:450px;
+    border-radius: 5px;
+}
+
+button{
+    margin:20px;
+    background: rgb(197, 55, 55);
+    height:40px;
+    width:200px;
+    border-radius: 5px;
+    color:white;
+    margin-left: 120px;
+}
+
+#imgbox{
+    width:150px;
+    overflow:hidden;
+    border-radius: 5px;
+}
+#imgbox.show-img{
+
+    margin:10px auto;
+    border: 1px solid #d1d1d1;
+    
+}
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <p><b>Write something to create QR code</b></p>
+        <input type="text" placeholder="Write something" id="qrtext">
+        <div id="imgbox">
+            
+            <img src="" id="qrimg">
+
+        </div>
+
+        <button onclick="generateQR()">Click here to create QR Coder</button>
+    </div>
+
+    <script>
+        let imgbox= document.getElementById("imgbox");
+        let qrtext= document.getElementById("qrtext");
+        let qrimg= document.getElementById("qrimg") ;
+
+        function generateQR(){
+            if(qrtext.value.length >0)
+            {
+                qrimg.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrtext.value;
+
+                imgbox.classList.add("show-img");
+            }
+        }
+           </script>
+</body>
+</html>
